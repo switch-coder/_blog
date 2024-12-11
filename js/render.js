@@ -174,7 +174,7 @@ function createCardElement(fileInfo, index) {
     */
   const card = document.createElement("div");
   if (index === 0) {
-    card.classList.add(...bloglistFirstCardStyle.split(" "));
+    card.classList.add(...bloglistCardStyle.split(" "));
   } else {
     card.classList.add(...bloglistCardStyle.split(" "));
   }
@@ -184,7 +184,7 @@ function createCardElement(fileInfo, index) {
     img.src = fileInfo.thumbnail;
     img.alt = fileInfo.title;
     if (index === 0) {
-      img.classList.add(...bloglistFirstCardImgStyle.split(" "));
+      img.classList.add(...bloglistCardImgStyle.split(" "));
     } else {
       img.classList.add(...bloglistCardImgStyle.split(" "));
     }
@@ -213,7 +213,7 @@ function createCardElement(fileInfo, index) {
 
   const description = document.createElement("p");
   if (index == 0) {
-    description.classList.add(...bloglistFirstCardDescriptionStyle.split(" "));
+    description.classList.add(...bloglistCardDescriptionStyle.split(" "));
   } else {
     description.classList.add(...bloglistCardDescriptionStyle.split(" "));
   }
