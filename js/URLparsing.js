@@ -31,9 +31,12 @@ if (isLocal) {
   document.title = siteConfig.blogTitle || defaultTitle;
 
   // 클릭했을 때 메인페이지로 이동
-  $blogTitle.onclick = () => {
-    const mainUrl = new URL(`http://127.0.0.1${url.port ? ":" + url.port : ""}`);
+  $blogTitle.onclick = async () => {
+    const mainUrl = new URL(
+      `http://127.0.0.1${url.port ? ":" + url.port : ""}`
+    );
     window.history.pushState({}, "", mainUrl);
+    await initDataBlogList();
     renderBlogList();
   };
 } else {
@@ -56,7 +59,9 @@ if (isLocal) {
 
   // 클릭했을 때 메인페이지로 이동
   $blogTitle.onclick = () => {
-    const url = new URL(`https://${siteConfig.username}.github.io/${siteConfig.repositoryName}/`);
+    const url = new URL(
+      `https://${siteConfig.username}.github.io/${siteConfig.repositoryName}/`
+    );
     window.history.pushState({}, "", url);
     renderBlogList();
   };

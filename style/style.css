@@ -13,7 +13,8 @@
   mask-repeat: no-repeat;
   mask-position: center center;
 }
-#menu-button:hover, #menu-button.active {
+#menu-button:hover,
+#menu-button.active {
   background-color: #121314;
 }
 
@@ -31,7 +32,8 @@
   mask-repeat: no-repeat;
   mask-position: center center;
 }
-#search-button:hover, #search-button.active {
+#search-button:hover,
+#search-button.active {
   background-color: #121314;
 }
 
@@ -55,7 +57,8 @@
     background-color: #47494d;
   }
 }
-.search-inp-btn:hover, .search-inp-btn.active {
+.search-inp-btn:hover,
+.search-inp-btn.active {
   background-color: #47494d;
 }
 
@@ -81,7 +84,8 @@
   mask-repeat: no-repeat;
   mask-position: center center;
 }
-.reset-inp-btn:hover, .reset-inp-btn.active {
+.reset-inp-btn:hover,
+.reset-inp-btn.active {
   background-color: #47494d;
 }
 
@@ -92,7 +96,8 @@
   align-items: center;
   justify-content: center;
 }
-#copy-button:hover::after, #copy-button.active::after {
+#copy-button:hover::after,
+#copy-button.active::after {
   background-color: #121314;
 }
 #copy-button::after {
@@ -120,7 +125,8 @@
   align-items: center;
   justify-content: center;
 }
-#aside-button:active, #aside-button:focus {
+#aside-button:active,
+#aside-button:focus {
   outline: none;
 }
 #aside-button::after {
@@ -230,4 +236,17 @@
   mask-size: 100%;
   mask-repeat: no-repeat;
   mask-position: center center;
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
+
+.mainContent {
+  transition: transform 0.1s ease-out;
+}
+
+.max-w-media {
+  max-width: 108rem;
+}
+
+.mainContent.hover-blur:hover {
+  filter: blur(8px);
+  transition: filter 0.3s ease;
+}

@@ -53,14 +53,15 @@ const notebookcopyButtonStyle = `border border-lv2 copy-button bg-white rounded-
 const notebookdownloadButtonStyle = `download-button px-5 py-[11px] mb-4 text-sm font-medium text-white bg-primary rounded-[10px] hover:bg-primary`;
 
 // bloglist 목록 스타일
-const bloglistFirstCardStyle = `lg:col-span-3 md:col-span-2 col-span-1 h-auto rounded overflow-hidden bg-white transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-105 flex md:flex-row flex-col flex-1 md:mb-[20px] cursor-pointer`;
-const bloglistFirstCardImgStyle = `w-full object-cover object-center rounded-2xl overflow-hidden md:h-auto h-[200px] md:w-[49%] lg:w-[52%] shrink-0 mr-8`;
+const bloglistMainContentStyle = `md:absolute lg:absolute relative mainContent md:h-auto h-screen object-cover object-center overflow-hidden top-0 left-0 aspect-video`;
+const bloglistFirstCardStyle = `group h-full bg-white transition duration-200 ease-in-out transform hover:-translate-y-1 flex-col flex-1 cursor-pointer z-10 justify-end`;
+const bloglistFirstCardImgStyle = `w-full  object-cover object-center overflow-hidden md:h-auto aspect shrink-0 mr-8`;
 const bloglistFirstCardDescriptionStyle = `text-graylv4 text-base font-normal leading-snug md:max-h-40 md:line-clamp-[7] line-clamp-3 mb-3`;
 
-const bloglistCardStyle = `lg:max-w-sm overflow-hidden bg-white transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-105 cursor-poitner col-span-1 w-auto cursor-pointer`;
-const bloglistCardImgStyle = `w-full h-[200px] object-cover object-center rounded-2xl overflow-hidden`;
+const bloglistCardStyle = `relative group overflow-hidden bg-white transition duration-200 ease-in-out transform hover:-translate-y-1 cursor-poitner col-span-1 w-auto cursor-pointer`;
+const bloglistCardImgStyle = `w-full aspect-video object-cover object-center overflow-hidden group-hover:blur`;
 
-const bloglistCardBodyStyle = `py-4`;
+const bloglistCardBodyStyle = `h-full w-full p-4 md:absolute relative md:opacity-0 opacity-100 group-hover:opacity-100 duration-300 bottom-0 group-hover:bg-gray-100/10`;
 const bloglistCardTitleStyle = `font-bold text-2xl mb-3`;
 const bloglistCardCategoryStyle = `inline-block bg-activation text-primary md:text-sm font-medium mb-3 px-3 py-1.5 rounded-lg transition duration-200 ease-in-out hover:bg-blue-400 hover:text-white`;
 const bloglistCardDescriptionStyle = `text-graylv4 text-base font-normal leading-snug h-16 line-clamp-3 mb-3`;

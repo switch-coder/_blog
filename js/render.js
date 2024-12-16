@@ -174,7 +174,7 @@ function createCardElement(fileInfo, index) {
     */
   const card = document.createElement("div");
   if (index === 0) {
-    card.classList.add(...bloglistCardStyle.split(" "));
+    card.classList.add(...bloglistFirstCardStyle.split(" "));
   } else {
     card.classList.add(...bloglistCardStyle.split(" "));
   }
@@ -184,7 +184,7 @@ function createCardElement(fileInfo, index) {
     img.src = fileInfo.thumbnail;
     img.alt = fileInfo.title;
     if (index === 0) {
-      img.classList.add(...bloglistCardImgStyle.split(" "));
+      img.classList.add(...bloglistMainContentStyle.split(" "));
     } else {
       img.classList.add(...bloglistCardImgStyle.split(" "));
     }
@@ -220,25 +220,25 @@ function createCardElement(fileInfo, index) {
   description.textContent = fileInfo.description;
   cardBody.appendChild(description);
 
-  const authorDiv = document.createElement("div");
-  authorDiv.classList.add(...bloglistCardAuthorDivStyle.split(" "));
-  cardBody.appendChild(authorDiv);
+  // const authorDiv = document.createElement("div");
+  // authorDiv.classList.add(...bloglistCardAuthorDivStyle.split(" "));
+  // cardBody.appendChild(authorDiv);
 
-  const authorImg = document.createElement("img");
-  authorImg.src = users[fileInfo.author]["img"];
-  authorImg.alt = users[fileInfo.author]["username"];
-  authorImg.classList.add(...bloglistCardAuthorImgStyle.split(" "));
-  authorDiv.appendChild(authorImg);
+  // const authorImg = document.createElement("img");
+  // authorImg.src = users[fileInfo.author]["img"];
+  // authorImg.alt = users[fileInfo.author]["username"];
+  // authorImg.classList.add(...bloglistCardAuthorImgStyle.split(" "));
+  // authorDiv.appendChild(authorImg);
 
-  const author = document.createElement("p");
-  author.classList.add(...bloglistCardAuthorStyle.split(" "));
-  author.textContent = users[fileInfo.author]["username"];
-  authorDiv.appendChild(author);
+  // const author = document.createElement("p");
+  // author.classList.add(...bloglistCardAuthorStyle.split(" "));
+  // author.textContent = users[fileInfo.author]["username"];
+  // authorDiv.appendChild(author);
 
-  const date = document.createElement("p");
-  date.classList.add(...bloglistCardDateStyle.split(" "));
-  date.textContent = formatDate(fileInfo.date);
-  cardBody.appendChild(date);
+  // const date = document.createElement("p");
+  // date.classList.add(...bloglistCardDateStyle.split(" "));
+  // date.textContent = formatDate(fileInfo.date);
+  // cardBody.appendChild(date);
 
   card.appendChild(cardBody);
 
@@ -626,6 +626,7 @@ async function initialize() {
     
     TODO: URL 파싱 결과 상세 블로그나 메뉴상태이면 검색 버튼을 누르기 전까지는 initDataBlogList()를 실행시킬 필요 없음. 이를 통해 API 호출 한 번을 아낄 수 있음.
     */
+
   if (!url.search.split("=")[1] || url.search.split("=")[1] === "blog.md") {
     // 메뉴 로딩
     await initDataBlogMenu();
@@ -682,6 +683,45 @@ async function initialize() {
       }
     }
   }
+
+  const mainContent = document.querySelector(".mainContent");
+
+  const viewportHeight = window.innerHeight * 0.78;
+  const width = window.outerWidth;
+  if (width > 768) {
+    mainContent.style.transform = `translate(51.5% , -${
+      viewportHeight * 1.1
+    }px) scale(2.3)`;
+  } else {
+    mainContent.style.transform = `translate(0,0) scale(1)`;
+  }
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const width = window.outerWidth;
+    const progress = Math.min(scrollY / viewportHeight, 1);
+    if (width < 768) {
+      mainContent.style.transform = `translate(0,0) scale(1)`;
+      return;
+    }
+
+    if (scrollY === 0) {
+      // 초기 위치 (화면 중앙)
+      mainContent.style.transform = `translate(51.5%, -${
+        viewportHeight * 1.1
+      }px) scale(2.3)`;
+    } else {
+      mainContent.style.transform = `translate(${51.5 * (1 - progress)}%,-${
+        viewportHeight * 1.1 * (1 - progress)
+      }px) scale(${2.1 - 1 * progress})`; // scale도 점진적으로 축소
+    }
+    if (progress === 1) {
+      mainContent.classList.add("group-hover:blur");
+      mainContent.parentElement.classList.add("overflow-hidden");
+    } else {
+      mainContent.classList.remove("group-hover:blur");
+      mainContent.parentElement.classList.remove("overflow-hidden");
+    }
+  });
 }
 
 initialize();

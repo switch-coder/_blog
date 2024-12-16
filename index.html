@@ -22,6 +22,13 @@
     <script>
       tailwind.config = {
         theme: {
+          container: {
+            screens: {
+              lg: "108rem",
+              xl: "108rem",
+              "2xl": "108rem",
+            },
+          },
           extend: {
             colors: {
               primary: "#2e6ff2",
@@ -59,7 +66,7 @@
     </style>
   </head>
   <body class="font-sans w-full text-surface">
-    <header class="relative bg-white mx-auto border-b border-gray-300">
+    <header class="w-full bg-white/40 mx-auto z-[11] backdrop-blur fixed">
       <nav
         class="container max-w-[1190px] mx-auto md:p-[19px] p-4 flex items-center relative"
       >
@@ -88,7 +95,7 @@
         </button>
 
         <div
-          class="search-cont w-80 hidden md:block md:relative absolute z-10 rounded-2xl p-4 border border-graylv2 bottom-[-12px] right-2 xl:right-0 translate-y-full bg-background w-96 max-w-full box-border md:p-0 md:top-0 md:right-0 md:border-0 md:translate-y-0 md:w-80 md:ml-10"
+          class="search-cont w-80 hidden md:block md:relative absolute z-10 rounded-2xl p-4 bottom-[-12px] right-2 xl:right-0 translate-y-full bg-white/40 backdrop-blur w-96 max-w-full md:p-0 md:top-0 md:right-0 md:translate-y-0 md:w-80 md:ml-10"
         >
           <label for="search-input">
             <input
@@ -113,23 +120,26 @@
       <!-- 모바일에서 메뉴 영역이 보이도록 하는 영역 -->
       <div
         id="mobileMenu"
-        class="absolute bg-background w-full max-w-[1190px] border-b border-graylv2 z-10 md:hidden"
+        class="absolute bg-white/40 backdrop-blur w-full max-w-media z-10 md:hidden"
       ></div>
       <!-- // 모바일에서 메뉴 영역이 보이도록 하는 영역 -->
     </header>
 
-    <main class="container p-8 pb-4 w-full mx-auto max-w-[1190px] md:pt-[60px]">
+    <main
+      class="container px-0 pb-4 w-full mx-auto max-w-media md:pt-[60px] md:px-8"
+    >
+      <div class="w-full md:h-screen lg:h-screen h-0 target"></div>
       <!-- 블로그 포스트 리스트 영역 -->
       <div
         id="blog-posts"
-        class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-[25px] lg:gap-y-10 gap-y-4 mb-20"
+        class="grid md:grid-cols-2 lg:grid-cols-2 gap-x-[25px] lg:gap-y-10 gap-y-4 mb-20"
       ></div>
       <!-- // 블로그 포스트 리스트 영역-->
 
       <!-- contents 영역 -->
       <div
         id="contents"
-        class="mt-6 mb-28 grid-cols-3 max-w-[990px] mx-auto"
+        class="mb-28 grid-cols-3 max-w-[990px] mx-auto px-4 pt-20 md:p-0"
       ></div>
       <!-- // contents 영역-->
 
@@ -143,9 +153,9 @@
     >
       <header class="flex items-center">
         <h2 class="aside-tit sr-only text-sm font-semibold ml-5">content</h2>
-        <button id="aside-button">
+        <!-- <button id="aside-button">
           <span class="sr-only">카테고리 열기</span>
-        </button>
+        </button> -->
       </header>
       <aside></aside>
     </section>
